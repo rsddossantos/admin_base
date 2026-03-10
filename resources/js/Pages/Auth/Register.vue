@@ -1,9 +1,5 @@
-<script setup>
+﻿<script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -22,92 +18,78 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Register" />
+        <Head title="Criar conta" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Name" />
+        <v-card class="auth-card" elevation="12">
+            <v-card-text>
+                <div class="auth-title">Criar nova conta</div>
+                <div class="auth-subtitle">
+                    Preencha seus dados para iniciar no AdminBase.
+                </div>
 
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
+                <v-form @submit.prevent="submit">
+                    <v-text-field
+                        v-model="form.name"
+                        label="Nome"
+                        type="text"
+                        autocomplete="name"
+                        variant="outlined"
+                        density="comfortable"
+                        :error-messages="form.errors.name ? [form.errors.name] : []"
+                        required
+                        autofocus
+                    />
 
-                <InputError class="mt-2" :message="form.errors.name" />
-            </div>
+                    <v-text-field
+                        v-model="form.email"
+                        label="Email"
+                        type="email"
+                        autocomplete="username"
+                        variant="outlined"
+                        density="comfortable"
+                        :error-messages="form.errors.email ? [form.errors.email] : []"
+                        required
+                    />
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                    <v-text-field
+                        v-model="form.password"
+                        label="Senha"
+                        type="password"
+                        autocomplete="new-password"
+                        variant="outlined"
+                        density="comfortable"
+                        :error-messages="form.errors.password ? [form.errors.password] : []"
+                        required
+                    />
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
-                />
+                    <v-text-field
+                        v-model="form.password_confirmation"
+                        label="Confirmar senha"
+                        type="password"
+                        autocomplete="new-password"
+                        variant="outlined"
+                        density="comfortable"
+                        :error-messages="form.errors.password_confirmation ? [form.errors.password_confirmation] : []"
+                        required
+                    />
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+                    <v-btn
+                        type="submit"
+                        color="primary"
+                        size="large"
+                        block
+                        :loading="form.processing"
+                        :disabled="form.processing"
+                    >
+                        Criar conta
+                    </v-btn>
+                </v-form>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel
-                    for="password_confirmation"
-                    value="Confirm Password"
-                />
-
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError
-                    class="mt-2"
-                    :message="form.errors.password_confirmation"
-                />
-            </div>
-
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    :href="route('login')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Already registered?
-                </Link>
-
-                <PrimaryButton
-                    class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Register
-                </PrimaryButton>
-            </div>
-        </form>
+                <div class="mt-6 auth-helper">
+                    Ja tem uma conta?
+                    <Link :href="route('login')" class="auth-link">Fazer login</Link>
+                </div>
+            </v-card-text>
+        </v-card>
     </GuestLayout>
 </template>

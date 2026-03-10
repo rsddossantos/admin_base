@@ -1,9 +1,9 @@
 # Convenções de desenvolvimento
 
 ## Idioma e nomenclatura
-- Mensagens de commit devem ser escritas em português.
-- Comentários em código devem ser escritos em português quando necessários.
-- Implementação de código deve usar inglês para nomes técnicos.
+- Mensagens de commit devem ser escritas em português PT-BR.
+- Comentários em código devem ser escritos em português PT-BR.
+- Todo o código deverá ser em inglês com exceção de textos que serão exibidos para o usuário final, estes devem ser sempre em português PT-BR.
 - Variáveis e funções devem seguir padrão camelCase.
 
 ## Diretrizes gerais

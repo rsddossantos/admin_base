@@ -1,4 +1,4 @@
-import '../css/app.css';
+﻿import '../css/app.css';
 import './bootstrap';
 
 import { createInertiaApp } from '@inertiajs/vue3';
@@ -19,6 +19,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(vuetify)
             .use(ZiggyVue)
             .mount(el);
     },

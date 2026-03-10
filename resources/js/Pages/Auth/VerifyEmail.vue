@@ -1,7 +1,6 @@
-<script setup>
+﻿<script setup>
 import { computed } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -23,39 +22,50 @@ const verificationLinkSent = computed(
 
 <template>
     <GuestLayout>
-        <Head title="Email Verification" />
+        <Head title="Verificar email" />
 
-        <div class="mb-4 text-sm text-gray-600">
-            Thanks for signing up! Before getting started, could you verify your
-            email address by clicking on the link we just emailed to you? If you
-            didn't receive the email, we will gladly send you another.
-        </div>
+        <v-card class="auth-card" elevation="12">
+            <v-card-text>
+                <div class="auth-title">Confirme seu email</div>
+                <div class="auth-subtitle">
+                    Enviamos um link de verificacao. Clique nele para ativar sua conta.
+                </div>
 
-        <div
-            class="mb-4 text-sm font-medium text-green-600"
-            v-if="verificationLinkSent"
-        >
-            A new verification link has been sent to the email address you
-            provided during registration.
-        </div>
-
-        <form @submit.prevent="submit">
-            <div class="mt-4 flex items-center justify-between">
-                <PrimaryButton
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
+                <v-alert
+                    v-if="verificationLinkSent"
+                    type="success"
+                    variant="tonal"
+                    class="mb-4"
                 >
-                    Resend Verification Email
-                </PrimaryButton>
+                    Um novo link de verificacao foi enviado para o seu email.
+                </v-alert>
 
-                <Link
-                    :href="route('logout')"
-                    method="post"
-                    as="button"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >Log Out</Link
-                >
-            </div>
-        </form>
+                <v-form @submit.prevent="submit">
+                    <v-btn
+                        type="submit"
+                        color="primary"
+                        size="large"
+                        block
+                        :loading="form.processing"
+                        :disabled="form.processing"
+                        class="mb-4"
+                    >
+                        Reenviar link de verificacao
+                    </v-btn>
+                </v-form>
+
+                <div class="auth-helper d-flex align-center justify-space-between">
+                    <span>Precisa sair da conta?</span>
+                    <Link
+                        :href="route('logout')"
+                        method="post"
+                        as="button"
+                        class="auth-link"
+                    >
+                        Sair
+                    </Link>
+                </div>
+            </v-card-text>
+        </v-card>
     </GuestLayout>
 </template>

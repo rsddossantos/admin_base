@@ -1,22 +1,230 @@
-<script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+﻿<script setup>
 import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <div
-        class="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0"
-    >
-        <div>
-            <Link href="/">
-                <ApplicationLogo class="h-20 w-20 fill-current text-gray-500" />
-            </Link>
-        </div>
+    <v-app class="guest-app">
+        <v-main class="guest-main">
+            <div class="guest-bg">
+                <v-container class="guest-container">
+                    <v-row class="guest-row" align="center" justify="center">
+                        <v-col cols="12" md="6" lg="5" class="guest-brand">
+                            <div class="brand-panel">
+                                <div class="brand-chip">AdminBase</div>
+                                <h1 class="brand-title">
+                                    Administre sua empresa com controle total
+                                </h1>
+                                <p class="brand-subtitle">
+                                    Uma base SaaS pronta para crescer com seguranca,
+                                    desempenho e uma experiencia moderna.
+                                </p>
+                                <div class="brand-metrics">
+                                    <div class="metric-item">
+                                        <span class="metric-label">Seguranca</span>
+                                        <span class="metric-value">Camadas ativas</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Multicompany</span>
+                                        <span class="metric-value">Contexto isolado</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">UX</span>
+                                        <span class="metric-value">Foco em produtividade</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </v-col>
 
-        <div
-            class="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg"
-        >
-            <slot />
-        </div>
-    </div>
+                        <v-col cols="12" md="6" lg="5">
+                            <div class="auth-shell">
+                                <slot />
+                            </div>
+                            <div class="auth-footer">
+                                <Link href="/" class="auth-home">AdminBase</Link>
+                                <span class="auth-footer-text">
+                                    Plataforma administrativa SaaS
+                                </span>
+                            </div>
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </div>
+        </v-main>
+    </v-app>
 </template>
+
+<style scoped>
+.guest-app {
+    font-family: 'Manrope', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.guest-main {
+    background: #0f172a;
+}
+
+.guest-bg {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(120deg, #0f172a 0%, #1e293b 45%, #0f766e 100%);
+    color: #f8fafc;
+}
+
+.guest-bg::before {
+    content: '';
+    position: absolute;
+    inset: -20% 35% auto -30%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.35), transparent 60%);
+    opacity: 0.6;
+}
+
+.guest-bg::after {
+    content: '';
+    position: absolute;
+    inset: auto -10% -35% 20%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 65%);
+    opacity: 0.7;
+}
+
+.guest-container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
+.guest-row {
+    width: 100%;
+}
+
+.guest-brand {
+    display: none;
+}
+
+@media (min-width: 960px) {
+    .guest-brand {
+        display: block;
+    }
+}
+
+.brand-panel {
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.brand-chip {
+    align-self: flex-start;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(15, 118, 110, 0.35);
+    border: 1px solid rgba(94, 234, 212, 0.5);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.brand-title {
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.brand-subtitle {
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0;
+    color: rgba(248, 250, 252, 0.75);
+}
+
+.brand-metrics {
+    display: grid;
+    gap: 12px;
+}
+
+.metric-item {
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    backdrop-filter: blur(8px);
+}
+
+.metric-label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(226, 232, 240, 0.7);
+}
+
+.metric-value {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #f8fafc;
+}
+
+.auth-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-footer {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(248, 250, 252, 0.7);
+    font-size: 13px;
+}
+
+.auth-home {
+    color: #f8fafc;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer-text {
+    opacity: 0.8;
+}
+
+:deep(.auth-card) {
+    border-radius: 24px;
+    background: rgba(248, 250, 252, 0.95);
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(12px);
+}
+
+:deep(.auth-title) {
+    font-size: 26px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+
+:deep(.auth-subtitle) {
+    font-size: 14px;
+    color: rgba(15, 23, 42, 0.65);
+    margin-bottom: 20px;
+}
+
+:deep(.auth-helper) {
+    font-size: 13px;
+    color: rgba(15, 23, 42, 0.6);
+}
+
+:deep(.auth-link) {
+    color: #0f766e;
+    text-decoration: none;
+    font-weight: 500;
+}
+</style>
