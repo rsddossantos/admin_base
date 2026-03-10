@@ -1,5 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 # AdminBase
 
 AdminBase é um protótipo de base administrativa SaaS multicompany, pensado para acelerar novos projetos empresariais com arquitetura escalável, segurança e UI/UX responsiva.
@@ -47,3 +45,6 @@ Criar estrutura da base de dados
 ```php
 php artisan migrate
 ```
+
+
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
