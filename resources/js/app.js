@@ -7,7 +7,7 @@ import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import vuetify from './Plugins/vuetify';
 
-const appName = import.meta.env.VITE_APP_NAME || 'AdminBase';
+const appName = import.meta.env.VITE_APP_NAME;
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

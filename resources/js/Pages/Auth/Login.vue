@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
@@ -68,33 +68,39 @@ const submit = () => {
                         required
                     />
 
-                    <div class="d-flex align-center justify-space-between mb-6">
+                    <div class="d-flex align-center mb-6">
                         <v-checkbox
                             v-model="form.remember"
-                            label="Manter conectado"
+                            label="Manter-me conectado"
                             density="comfortable"
+                            color="primary"
+                            base-color="primary"
+                            class="auth-checkbox"
                         />
-
-                        <Link
-                            v-if="canResetPassword"
-                            :href="route('password.request')"
-                            class="auth-link"
-                        >
-                            Esqueci minha senha
-                        </Link>
                     </div>
 
                     <v-btn
                         type="submit"
                         color="primary"
+                        variant="flat"
                         size="large"
                         block
+                        class="auth-primary"
                         :loading="form.processing"
                         :disabled="form.processing"
                     >
                         Entrar
                     </v-btn>
                 </v-form>
+
+                <div v-if="canResetPassword" class="mt-6 auth-helper">
+                    <Link
+                        :href="route('password.request')"
+                        class="auth-link"
+                    >
+                        Esqueci minha senha
+                    </Link>
+                </div>
             </v-card-text>
         </v-card>
     </GuestLayout>

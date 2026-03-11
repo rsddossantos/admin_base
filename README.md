@@ -1,7 +1,7 @@
 # AdminBase
 
 AdminBase é um protótipo de base administrativa SaaS multicompany, pensado para acelerar novos projetos empresariais com arquitetura escalável, segurança e UI/UX responsiva.
-Construído com auxílio da IA Codex da OpenAI.
+<br><i>Construído com auxílio da IA Codex da OpenAI.</i>
 
 ## Stacks
 - Laravel 12 como backend

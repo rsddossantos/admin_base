@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
@@ -73,7 +73,7 @@ const submit = () => {
                         required
                     />
 
-                    <v-btn
+                    <v-btn variant="flat" class="auth-primary"
                         type="submit"
                         color="primary"
                         size="large"
@@ -92,3 +92,4 @@ const submit = () => {
         </v-card>
     </GuestLayout>
 </template>
+

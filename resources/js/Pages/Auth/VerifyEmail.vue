@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { computed } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
@@ -44,11 +44,12 @@ const verificationLinkSent = computed(
                     <v-btn
                         type="submit"
                         color="primary"
+                        variant="flat"
                         size="large"
                         block
+                        class="auth-primary mb-4"
                         :loading="form.processing"
                         :disabled="form.processing"
-                        class="mb-4"
                     >
                         Reenviar link de verificacao
                     </v-btn>

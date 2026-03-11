@@ -1,26 +1,27 @@
-﻿<script setup>
+<script setup>
 import { Link } from '@inertiajs/vue3';
+const appName = import.meta.env.VITE_APP_NAME;
 </script>
 
 <template>
-    <v-app class="guest-app">
+    <v-app class="guest-app" theme="adminBase">
         <v-main class="guest-main">
             <div class="guest-bg">
                 <v-container class="guest-container">
-                    <v-row class="guest-row" align="center" justify="center">
+                    <v-row class="guest-row" align="start" justify="center">
                         <v-col cols="12" md="6" lg="5" class="guest-brand">
                             <div class="brand-panel">
-                                <div class="brand-chip">AdminBase</div>
+                                <div class="brand-chip">{{ appName }}</div>
                                 <h1 class="brand-title">
                                     Administre sua empresa com controle total
                                 </h1>
                                 <p class="brand-subtitle">
-                                    Uma base SaaS pronta para crescer com seguranca,
+                                    Uma base SaaS pronta para crescer com segurança,
                                     desempenho e uma experiencia moderna.
                                 </p>
                                 <div class="brand-metrics">
                                     <div class="metric-item">
-                                        <span class="metric-label">Seguranca</span>
+                                        <span class="metric-label">Segurança</span>
                                         <span class="metric-value">Camadas ativas</span>
                                     </div>
                                     <div class="metric-item">
@@ -35,18 +36,19 @@ import { Link } from '@inertiajs/vue3';
                             </div>
                         </v-col>
 
-                        <v-col cols="12" md="6" lg="5">
+                        <v-col cols="12" md="6" lg="5" class="auth-column">
                             <div class="auth-shell">
                                 <slot />
                             </div>
-                            <div class="auth-footer">
-                                <Link href="/" class="auth-home">AdminBase</Link>
-                                <span class="auth-footer-text">
-                                    Plataforma administrativa SaaS
-                                </span>
-                            </div>
                         </v-col>
                     </v-row>
+
+                    <div class="auth-footer">
+                        <Link href="/" class="auth-home">AdminBase</Link>
+                        <span class="auth-footer-text">
+                            Plataforma administrativa SaaS
+                        </span>
+                    </div>
                 </v-container>
             </div>
         </v-main>
@@ -67,7 +69,7 @@ import { Link } from '@inertiajs/vue3';
     position: relative;
     overflow: hidden;
     background: linear-gradient(120deg, #0f172a 0%, #1e293b 45%, #0f766e 100%);
-    color: #f8fafc;
+    color: rgb(var(--v-theme-on-primary));
 }
 
 .guest-bg::before {
@@ -93,13 +95,17 @@ import { Link } from '@inertiajs/vue3';
     z-index: 1;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding-top: 48px;
     padding-bottom: 48px;
+    gap: 32px;
 }
 
 .guest-row {
     width: 100%;
+    align-items: flex-start;
 }
 
 .guest-brand {
@@ -169,26 +175,34 @@ import { Link } from '@inertiajs/vue3';
     display: block;
     font-size: 16px;
     font-weight: 600;
-    color: #f8fafc;
+    color: rgb(var(--v-theme-on-primary));
+}
+
+.auth-column {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .auth-shell {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
 .auth-footer {
-    margin-top: 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     color: rgba(248, 250, 252, 0.7);
     font-size: 13px;
+    text-align: center;
 }
 
 .auth-home {
-    color: #f8fafc;
+    color: rgb(var(--v-theme-on-primary));
     text-decoration: none;
     font-weight: 600;
 }
@@ -199,7 +213,7 @@ import { Link } from '@inertiajs/vue3';
 
 :deep(.auth-card) {
     border-radius: 24px;
-    background: rgba(248, 250, 252, 0.95);
+    background: #f8fafc;
     box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
     backdrop-filter: blur(12px);
 }
@@ -223,8 +237,60 @@ import { Link } from '@inertiajs/vue3';
 }
 
 :deep(.auth-link) {
-    color: #0f766e;
+    color: var(--brand-color);
     text-decoration: none;
     font-weight: 500;
+}
+
+:deep(.v-field) {
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+:deep(.v-field__input) {
+    color: #0f172a;
+}
+
+:deep(.v-field__input input) {
+    color: #0f172a;
+}
+
+:deep(.v-field__input input::placeholder) {
+    color: rgba(15, 23, 42, 0.6);
+}
+
+:deep(.v-label) {
+    color: rgba(15, 23, 42, 0.78);
+}
+
+:deep(.v-field--variant-outlined .v-label.v-field-label--floating) {
+    transform: translateY(-18px) scale(0.85);
+    background: #f8fafc;
+    color: rgba(15, 23, 42, 0.85);
+}
+
+:deep(.v-checkbox .v-label) {
+    color: rgba(15, 23, 42, 0.8);
+}
+
+:deep(.v-selection-control__input) {
+    color: #0f172a;
+}
+
+:deep(.v-selection-control__input .v-icon) {
+    color: #0f172a;
+}
+
+:deep(.auth-checkbox .v-selection-control__input) {
+    opacity: 1;
+}
+
+:deep(.auth-checkbox .v-selection-control__input .v-icon) {
+    color: var(--brand-color);
+}
+
+:deep(.v-btn.auth-primary) {
+    background-color: var(--brand-color);
+    color: rgb(var(--v-theme-on-primary));
 }
 </style>
