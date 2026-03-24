@@ -55,7 +55,7 @@ const appName = import.meta.env.VITE_APP_NAME;
     </v-app>
 </template>
 
-<style scoped>
+<style>
 .guest-app {
     font-family: 'Manrope', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -223,43 +223,47 @@ const appName = import.meta.env.VITE_APP_NAME;
     opacity: 0.8;
 }
 
-:deep(.auth-card) {
+.auth-card {
     border-radius: 24px;
     box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
     backdrop-filter: blur(12px);
 }
 
-:deep(.auth-title) {
+.auth-title {
     font-size: 26px;
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-:deep(.auth-subtitle) {
+.auth-subtitle {
     margin-bottom: 15px;
 }
 
-:deep(.auth-link) {
+.auth-link {
     color: rgb(var(--v-theme-primary));
     text-decoration: none;
     font-weight: 500;
 }
 
-:deep(.auth-checkbox .v-selection-control__input .v-icon) {
-    color: rgb(var(--v-theme-primary));
-}
-
-:deep(.auth-checkbox .v-label) {
-    color: rgb(var(--v-theme-primary));
-}
-
-:deep(.v-btn.auth-primary) {
+.v-btn.auth-primary {
     background-color: rgb(var(--v-theme-primary));
     color: rgb(var(--v-theme-surface));
 }
 
-:deep(.v-label.v-field-label--floating) {
+.v-label.v-field-label--floating {
     top: 2px !important;
+}
+
+.auth-input input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid rgb(var(--v-theme-primary)) !important;
+}
+
+.auth-input .v-field__input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid rgb(var(--v-theme-primary)) !important;
 }
 
 @media (min-width: 960px) {

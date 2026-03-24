@@ -53,6 +53,7 @@ const submit = () => {
                         type="email"
                         variant="solo"
                         autocomplete="off"
+                        color="primary"
                         :error-messages="form.errors.email ? [form.errors.email] : []"
                         required
                         autofocus
@@ -66,6 +67,7 @@ const submit = () => {
                         type="password"
                         variant="solo"
                         autocomplete="new-password"
+                        color="primary"
                         :error-messages="form.errors.password ? [form.errors.password] : []"
                         required
                     />
@@ -105,9 +107,3 @@ const submit = () => {
         </v-card>
     </GuestLayout>
 </template>
-
-<style>
-
-
-
-</style>

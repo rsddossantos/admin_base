@@ -39,12 +39,13 @@ const submit = () => {
 
                 <v-form @submit.prevent="submit">
                     <v-text-field
+                        class="auth-input"
                         v-model="form.email"
                         label="Email"
                         type="email"
-                        autocomplete="username"
-                        variant="outlined"
-                        density="comfortable"
+                        variant="solo"
+                        autocomplete="off"
+                        color="primary"
                         :error-messages="form.errors.email ? [form.errors.email] : []"
                         required
                         autofocus
