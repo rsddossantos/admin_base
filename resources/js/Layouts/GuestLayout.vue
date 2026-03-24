@@ -61,15 +61,20 @@ const appName = import.meta.env.VITE_APP_NAME;
 }
 
 .guest-main {
-    background: #0f172a;
+    background: rgb(var(--v-theme-background))
 }
 
 .guest-bg {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(120deg, #0f172a 0%, #1e293b 45%, #0f766e 100%);
-    color: rgb(var(--v-theme-on-primary));
+    background: linear-gradient(
+        120deg,
+        rgb(var(--v-theme-secondary)) 0%,
+        rgb(var(--v-theme-primary-dark)) 45%,
+        rgb(var(--v-theme-primary)) 100%
+    );
+    color: rgb(var(--v-theme-surface));
 }
 
 .guest-bg::before {
@@ -77,7 +82,11 @@ const appName = import.meta.env.VITE_APP_NAME;
     position: absolute;
     inset: -20% 35% auto -30%;
     height: 140%;
-    background: radial-gradient(circle, rgba(94, 234, 212, 0.35), transparent 60%);
+    background: radial-gradient(
+        circle,
+        rgba(var(--v-theme-primary-light), 0.35),
+        transparent 60%
+    );
     opacity: 0.6;
 }
 
@@ -86,7 +95,11 @@ const appName = import.meta.env.VITE_APP_NAME;
     position: absolute;
     inset: auto -10% -35% 20%;
     height: 120%;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 65%);
+    background: radial-gradient(
+        circle,
+        rgba(var(--v-theme-primary), 0.25),
+        transparent 65%
+    );
     opacity: 0.7;
 }
 
@@ -105,17 +118,12 @@ const appName = import.meta.env.VITE_APP_NAME;
 
 .guest-row {
     width: 100%;
-    align-items: flex-start;
+    align-items: flex-end;
+    gap: 24px;
 }
 
 .guest-brand {
     display: none;
-}
-
-@media (min-width: 960px) {
-    .guest-brand {
-        display: block;
-    }
 }
 
 .brand-panel {
@@ -129,8 +137,8 @@ const appName = import.meta.env.VITE_APP_NAME;
     align-self: flex-start;
     padding: 6px 16px;
     border-radius: 999px;
-    background: rgba(15, 118, 110, 0.35);
-    border: 1px solid rgba(94, 234, 212, 0.5);
+    background: rgba(var(--v-theme-primary), 0.35);
+    border: 1px solid rgba(var(--v-theme-primary-light), 0.5);
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -147,7 +155,7 @@ const appName = import.meta.env.VITE_APP_NAME;
     font-size: 16px;
     line-height: 1.7;
     margin: 0;
-    color: rgba(248, 250, 252, 0.75);
+    color: rgba(var(--v-theme-background-light), 0.75);
 }
 
 .brand-metrics {
@@ -158,7 +166,7 @@ const appName = import.meta.env.VITE_APP_NAME;
 .metric-item {
     padding: 12px 16px;
     border-radius: 16px;
-    background: rgba(15, 23, 42, 0.45);
+    background: rgba(var(--v-theme-background-dark), 0.45);
     border: 1px solid rgba(148, 163, 184, 0.2);
     backdrop-filter: blur(8px);
 }
@@ -175,7 +183,13 @@ const appName = import.meta.env.VITE_APP_NAME;
     display: block;
     font-size: 16px;
     font-weight: 600;
-    color: rgb(var(--v-theme-on-primary));
+    color: rgb(var(--v-theme-surface));
+}
+
+.auth-home {
+    color: rgb(var(--v-theme-surface));
+    text-decoration: none;
+    font-weight: 600;
 }
 
 .auth-column {
@@ -191,6 +205,10 @@ const appName = import.meta.env.VITE_APP_NAME;
     gap: 16px;
 }
 
+.auth-checkbox {
+    color: rgb(var(--v-theme-primary));
+}
+
 .auth-footer {
     display: flex;
     align-items: center;
@@ -201,19 +219,12 @@ const appName = import.meta.env.VITE_APP_NAME;
     text-align: center;
 }
 
-.auth-home {
-    color: rgb(var(--v-theme-on-primary));
-    text-decoration: none;
-    font-weight: 600;
-}
-
 .auth-footer-text {
     opacity: 0.8;
 }
 
 :deep(.auth-card) {
     border-radius: 24px;
-    background: #f8fafc;
     box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
     backdrop-filter: blur(12px);
 }
@@ -221,76 +232,42 @@ const appName = import.meta.env.VITE_APP_NAME;
 :deep(.auth-title) {
     font-size: 26px;
     font-weight: 600;
-    color: #0f172a;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 :deep(.auth-subtitle) {
-    font-size: 14px;
-    color: rgba(15, 23, 42, 0.65);
-    margin-bottom: 20px;
-}
-
-:deep(.auth-helper) {
-    font-size: 13px;
-    color: rgba(15, 23, 42, 0.6);
+    margin-bottom: 15px;
 }
 
 :deep(.auth-link) {
-    color: var(--brand-color);
+    color: rgb(var(--v-theme-primary));
     text-decoration: none;
     font-weight: 500;
 }
 
-:deep(.v-field) {
-    background: #f8fafc;
-    border-radius: 12px;
-}
-
-:deep(.v-field__input) {
-    color: #0f172a;
-}
-
-:deep(.v-field__input input) {
-    color: #0f172a;
-}
-
-:deep(.v-field__input input::placeholder) {
-    color: rgba(15, 23, 42, 0.6);
-}
-
-:deep(.v-label) {
-    color: rgba(15, 23, 42, 0.78);
-}
-
-:deep(.v-field--variant-outlined .v-label.v-field-label--floating) {
-    transform: translateY(-18px) scale(0.85);
-    background: #f8fafc;
-    color: rgba(15, 23, 42, 0.85);
-}
-
-:deep(.v-checkbox .v-label) {
-    color: rgba(15, 23, 42, 0.8);
-}
-
-:deep(.v-selection-control__input) {
-    color: #0f172a;
-}
-
-:deep(.v-selection-control__input .v-icon) {
-    color: #0f172a;
-}
-
-:deep(.auth-checkbox .v-selection-control__input) {
-    opacity: 1;
-}
-
 :deep(.auth-checkbox .v-selection-control__input .v-icon) {
-    color: var(--brand-color);
+    color: rgb(var(--v-theme-primary));
+}
+
+:deep(.auth-checkbox .v-label) {
+    color: rgb(var(--v-theme-primary));
 }
 
 :deep(.v-btn.auth-primary) {
-    background-color: var(--brand-color);
-    color: rgb(var(--v-theme-on-primary));
+    background-color: rgb(var(--v-theme-primary));
+    color: rgb(var(--v-theme-surface));
+}
+
+:deep(.v-label.v-field-label--floating) {
+    top: 2px !important;
+}
+
+@media (min-width: 960px) {
+    .guest-brand {
+        display: block;
+    }
+    .guest-row {
+        gap: 64px;
+    }
 }
 </style>

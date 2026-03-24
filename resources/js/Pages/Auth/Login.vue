@@ -32,7 +32,7 @@ const submit = () => {
             <v-card-text>
                 <div class="auth-title">Acesse sua conta</div>
                 <div class="auth-subtitle">
-                    Use seus dados para continuar no painel administrativo.
+                    Use seus dados para entrar no sistema.
                 </div>
 
                 <v-alert
@@ -46,35 +46,35 @@ const submit = () => {
 
                 <v-form @submit.prevent="submit">
                     <v-text-field
+                        ref="email"
+                        class="auth-input"
                         v-model="form.email"
                         label="Email"
                         type="email"
-                        autocomplete="username"
-                        variant="outlined"
-                        density="comfortable"
+                        variant="solo"
+                        autocomplete="off"
                         :error-messages="form.errors.email ? [form.errors.email] : []"
                         required
                         autofocus
                     />
 
                     <v-text-field
+                        ref="password"
+                        class="auth-input"
                         v-model="form.password"
                         label="Senha"
                         type="password"
-                        autocomplete="current-password"
-                        variant="outlined"
-                        density="comfortable"
+                        variant="solo"
+                        autocomplete="new-password"
                         :error-messages="form.errors.password ? [form.errors.password] : []"
                         required
                     />
 
-                    <div class="d-flex align-center mb-6">
+                    <div class="d-flex align-center">
                         <v-checkbox
                             v-model="form.remember"
                             label="Manter-me conectado"
-                            density="comfortable"
                             color="primary"
-                            base-color="primary"
                             class="auth-checkbox"
                         />
                     </div>
@@ -105,3 +105,9 @@ const submit = () => {
         </v-card>
     </GuestLayout>
 </template>
+
+<style>
+
+
+
+</style>
