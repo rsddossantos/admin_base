@@ -9,7 +9,7 @@ const appName = import.meta.env.VITE_APP_NAME;
             <div class="guest-bg">
                 <v-container class="guest-container">
                     <v-row class="guest-row" align="start" justify="center">
-                        <v-col cols="12" md="6" lg="5" class="guest-brand">
+                        <v-col cols="12" md="6" lg="6" class="guest-brand">
                             <div class="brand-panel">
                                 <div class="brand-chip">{{ appName }}</div>
                                 <h1 class="brand-title">
@@ -36,7 +36,7 @@ const appName = import.meta.env.VITE_APP_NAME;
                             </div>
                         </v-col>
 
-                        <v-col cols="12" md="6" lg="5" class="auth-column">
+                        <v-col cols="12" md="6" lg="6" class="auth-column">
                             <div class="auth-shell">
                                 <slot />
                             </div>
@@ -44,7 +44,7 @@ const appName = import.meta.env.VITE_APP_NAME;
                     </v-row>
 
                     <div class="auth-footer">
-                        <Link href="/" class="auth-home">AdminBase</Link>
+                        <span class="auth-home">AdminBase</span>
                         <span class="auth-footer-text">
                             Plataforma administrativa SaaS
                         </span>
@@ -119,7 +119,6 @@ const appName = import.meta.env.VITE_APP_NAME;
 .guest-row {
     width: 100%;
     align-items: flex-end;
-    gap: 24px;
 }
 
 .guest-brand {
@@ -214,7 +213,7 @@ const appName = import.meta.env.VITE_APP_NAME;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    color: rgba(248, 250, 252, 0.7);
+    color: rgba(var(--v-theme-background-light), 0.7);
     font-size: 13px;
     text-align: center;
 }
@@ -225,7 +224,7 @@ const appName = import.meta.env.VITE_APP_NAME;
 
 .auth-card {
     border-radius: 24px;
-    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
+    box-shadow: 0 25px 60px rgba(var(--v-theme-secondary), 0.35);
     backdrop-filter: blur(12px);
 }
 
@@ -243,6 +242,11 @@ const appName = import.meta.env.VITE_APP_NAME;
     color: rgb(var(--v-theme-primary));
     text-decoration: none;
     font-weight: 500;
+    transition: filter 0.2s ease;
+}
+
+.auth-link:hover {
+    filter: brightness(0.7);
 }
 
 .v-btn.auth-primary {
@@ -254,24 +258,23 @@ const appName = import.meta.env.VITE_APP_NAME;
     top: 2px !important;
 }
 
-.auth-input input:focus {
+.auth-input .v-field__input:focus {
+    border-radius: 4px;
     outline: none;
-    box-shadow: none;
-    border: 2px solid rgb(var(--v-theme-primary)) !important;
+    border: none !important;
+    box-shadow: 0 0 0 1px rgb(var(--v-theme-primary));
+}
+.auth-input .v-field__field,
+.auth-input .v-field__input {
+    border-radius: 4px;
+    width: 100% !important;
+    box-sizing: border-box;
 }
 
-.auth-input .v-field__input:focus {
-    outline: none;
-    box-shadow: none;
-    border: 2px solid rgb(var(--v-theme-primary)) !important;
-}
 
 @media (min-width: 960px) {
     .guest-brand {
         display: block;
-    }
-    .guest-row {
-        gap: 64px;
     }
 }
 </style>

@@ -2,15 +2,6 @@
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
-defineProps({
-    canResetPassword: {
-        type: Boolean,
-    },
-    status: {
-        type: String,
-    },
-});
-
 const form = useForm({
     email: '',
     password: '',
@@ -35,51 +26,38 @@ const submit = () => {
                     Use seus dados para entrar no sistema.
                 </div>
 
-                <v-alert
-                    v-if="status"
-                    type="success"
-                    variant="tonal"
-                    class="mb-4"
-                >
-                    {{ status }}
-                </v-alert>
-
                 <v-form @submit.prevent="submit">
                     <v-text-field
-                        ref="email"
                         class="auth-input"
                         v-model="form.email"
                         label="Email"
                         type="email"
-                        variant="solo"
-                        autocomplete="off"
+                        variant="filled"
                         color="primary"
+                        autocomplete="email"
                         :error-messages="form.errors.email ? [form.errors.email] : []"
                         required
                         autofocus
                     />
 
                     <v-text-field
-                        ref="password"
                         class="auth-input"
                         v-model="form.password"
                         label="Senha"
                         type="password"
-                        variant="solo"
+                        variant="filled"
                         autocomplete="new-password"
                         color="primary"
                         :error-messages="form.errors.password ? [form.errors.password] : []"
                         required
                     />
 
-                    <div class="d-flex align-center">
-                        <v-checkbox
-                            v-model="form.remember"
-                            label="Manter-me conectado"
-                            color="primary"
-                            class="auth-checkbox"
-                        />
-                    </div>
+                    <v-checkbox
+                        v-model="form.remember"
+                        label="Manter-me conectado"
+                        color="primary"
+                        class="auth-checkbox"
+                    />
 
                     <v-btn
                         type="submit"
@@ -95,7 +73,7 @@ const submit = () => {
                     </v-btn>
                 </v-form>
 
-                <div v-if="canResetPassword" class="mt-6 auth-helper">
+                <div class="mt-6 auth-helper">
                     <Link
                         :href="route('password.request')"
                         class="auth-link"

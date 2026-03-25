@@ -2,12 +2,6 @@
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
-defineProps({
-    status: {
-        type: String,
-    },
-});
-
 const form = useForm({
     email: '',
 });
@@ -28,22 +22,13 @@ const submit = () => {
                     Informe seu email para receber um link de redefinicao de senha.
                 </div>
 
-                <v-alert
-                    v-if="status"
-                    type="success"
-                    variant="tonal"
-                    class="mb-4"
-                >
-                    {{ status }}
-                </v-alert>
-
                 <v-form @submit.prevent="submit">
                     <v-text-field
                         class="auth-input"
                         v-model="form.email"
                         label="Email"
                         type="email"
-                        variant="solo"
+                        variant="filled"
                         autocomplete="off"
                         color="primary"
                         :error-messages="form.errors.email ? [form.errors.email] : []"
