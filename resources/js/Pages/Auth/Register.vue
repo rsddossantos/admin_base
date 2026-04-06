@@ -29,51 +29,56 @@ const submit = () => {
 
                 <v-form @submit.prevent="submit">
                     <v-text-field
+                        class="auth-input"
                         v-model="form.name"
                         label="Nome"
                         type="text"
+                        variant="filled"
+                        color="primary"
                         autocomplete="name"
-                        variant="outlined"
-                        density="comfortable"
                         :error-messages="form.errors.name ? [form.errors.name] : []"
                         required
                         autofocus
                     />
 
                     <v-text-field
+                        class="auth-input"
                         v-model="form.email"
                         label="Email"
                         type="email"
-                        autocomplete="username"
-                        variant="outlined"
-                        density="comfortable"
+                        variant="filled"
+                        color="primary"
+                        autocomplete="email"
                         :error-messages="form.errors.email ? [form.errors.email] : []"
                         required
                     />
 
                     <v-text-field
+                        class="auth-input"
                         v-model="form.password"
                         label="Senha"
                         type="password"
+                        variant="filled"
                         autocomplete="new-password"
-                        variant="outlined"
-                        density="comfortable"
+                        color="primary"
                         :error-messages="form.errors.password ? [form.errors.password] : []"
                         required
                     />
 
                     <v-text-field
+                        class="auth-input"
                         v-model="form.password_confirmation"
                         label="Confirmar senha"
                         type="password"
+                        variant="filled"
                         autocomplete="new-password"
-                        variant="outlined"
-                        density="comfortable"
+                        color="primary"
                         :error-messages="form.errors.password_confirmation ? [form.errors.password_confirmation] : []"
                         required
                     />
 
-                    <v-btn variant="flat" class="auth-primary"
+                    <v-btn
+                        class="auth-primary"
                         type="submit"
                         color="primary"
                         size="large"

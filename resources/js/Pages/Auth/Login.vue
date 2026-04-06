@@ -60,12 +60,11 @@ const submit = () => {
                     />
 
                     <v-btn
+                        class="auth-primary"
                         type="submit"
                         color="primary"
-                        variant="flat"
                         size="large"
                         block
-                        class="auth-primary"
                         :loading="form.processing"
                         :disabled="form.processing"
                     >
