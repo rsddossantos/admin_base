@@ -82,6 +82,7 @@ const submit = () => {
                         type="submit"
                         color="primary"
                         size="large"
+                        variant="flat"
                         block
                         :loading="form.processing"
                         :disabled="form.processing"
