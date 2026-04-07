@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
-            $table->string('document')->nullable();
-
+            $table->boolean('contract_active')->default(true);
+            $table->string('slug')->unique();
+            $table->string('version')->nullable();
+            $table->boolean('is_root')->default(false);
             $table->timestamps();
         });
     }

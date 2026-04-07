@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('company_id')->nullable()->index();
             $table->foreignId('branch_id')->nullable()->index();
+            $table->boolean('is_root')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

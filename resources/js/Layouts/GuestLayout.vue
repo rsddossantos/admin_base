@@ -271,7 +271,6 @@ const appName = import.meta.env.VITE_APP_NAME;
     box-sizing: border-box;
 }
 
-
 @media (min-width: 960px) {
     .guest-brand {
         display: block;
