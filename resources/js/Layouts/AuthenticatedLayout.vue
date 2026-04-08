@@ -1,6 +1,5 @@
 ﻿<script setup>
 import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
@@ -8,6 +7,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
+const baseUrl = import.meta.env.BASE_URL;
 </script>
 
 <template>
@@ -21,8 +21,10 @@ const showingNavigationDropdown = ref(false);
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
                                 <Link :href="route('home')">
-                                    <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
+                                    <img
+                                        :src="`${baseUrl}img/default_logo.png`"
+                                        alt="Logo"
+                                        class="block h-12 w-auto"
                                     />
                                 </Link>
                             </div>
@@ -35,7 +37,7 @@ const showingNavigationDropdown = ref(false);
                                     :href="route('home')"
                                     :active="route().current('home')"
                                 >
-                                    Inicio
+                                    Dashboard
                                 </NavLink>
                             </div>
                         </div>
@@ -69,17 +71,28 @@ const showingNavigationDropdown = ref(false);
                                     </template>
 
                                     <template #content>
+                                        <div class="px-4 py-2 text-xs text-gray-500">
+                                            {{ $page.props.auth.user.email }}
+                                        </div>
+                                        <div class="border-t border-gray-100"></div>
                                         <DropdownLink
                                             :href="route('profile.edit')"
                                         >
-                                            Perfil
+                                            <span class="inline-flex items-center gap-2">
+                                                <span class="mdi mdi-account-circle text-base text-gray-500"></span>
+                                                Perfil
+                                            </span>
                                         </DropdownLink>
+                                        <div class="border-t border-gray-100"></div>
                                         <DropdownLink
                                             :href="route('logout')"
                                             method="post"
                                             as="button"
                                         >
-                                            Sair
+                                            <span class="inline-flex items-center gap-2 text-red-600">
+                                                <span class="mdi mdi-logout text-base"></span>
+                                                Sair
+                                            </span>
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>
@@ -142,7 +155,7 @@ const showingNavigationDropdown = ref(false);
                             :href="route('home')"
                             :active="route().current('home')"
                         >
-                            Inicio
+                            Dashboard
                         </ResponsiveNavLink>
                     </div>
 
