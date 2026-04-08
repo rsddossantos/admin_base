@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('company_id')->nullable()->index();
-            $table->foreignId('branch_id')->nullable()->index();
+            $table->foreignId('company_id')->constrained('companies')->cascadeOnDelete();
+            $table->foreignId('branch_id')->constrained('branches')->cascadeOnDelete();
             $table->boolean('is_root')->default(false);
+            $table->boolean('active')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
