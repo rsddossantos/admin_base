@@ -38,7 +38,6 @@ const submit = () => {
 
                     <v-btn variant="flat" class="auth-primary"
                         type="submit"
-                        color="primary"
                         size="large"
                         block
                         :loading="form.processing"

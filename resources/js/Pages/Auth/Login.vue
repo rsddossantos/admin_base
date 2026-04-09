@@ -124,14 +124,12 @@ const submit = () => {
                     <v-checkbox
                         v-model="form.remember"
                         label="Manter-me conectado"
-                        color="primary"
                         class="auth-checkbox"
                     />
 
                     <v-btn
                         class="auth-primary"
                         type="submit"
-                        color="primary"
                         size="large"
                         variant="flat"
                         block
