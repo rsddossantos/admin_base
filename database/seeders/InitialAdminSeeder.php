@@ -48,6 +48,7 @@ class InitialAdminSeeder extends Seeder
                 'is_root' => true,
                 'company_id' => $companyId,
                 'branch_id' => $branchId,
+                'email_verified_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

@@ -45,11 +45,21 @@ class LoginController extends Controller
             ]
         );
 
+        $credentials['active'] = true;
+
         if (! Auth::attempt($credentials, $request->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey($request));
 
             throw ValidationException::withMessages([
                 'email' => 'E-mail ou senha inválidos.',
+            ]);
+        }
+
+        if (! auth()->user()->hasVerifiedEmail()) {
+            Auth::logout();
+
+            throw ValidationException::withMessages([
+                'email' => 'E-mail não confirmado, por favor verifique seu e-mail.',
             ]);
         }
 
