@@ -93,7 +93,7 @@ const submit = () => {
                     Use seus dados para entrar no sistema.
                 </div>
 
-                <v-form @submit.prevent="submit">
+                <v-form autocomplete="off" @submit.prevent="submit">
                     <v-text-field
                         class="auth-input"
                         v-model="form.email"
