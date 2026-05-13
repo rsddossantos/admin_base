@@ -6,8 +6,16 @@ const form = useForm({
     email: '',
 });
 
+const props = defineProps({
+    status: String,
+});
+
 const submit = () => {
-    form.post(route('password.email'));
+    form.post(route('password.email'), {
+        onSuccess: () => {
+            form.reset('email');
+        },
+    });
 };
 </script>
 
@@ -21,6 +29,15 @@ const submit = () => {
                 <div class="auth-subtitle">
                     Informe seu email para receber um link de redefinicao de senha.
                 </div>
+
+                <v-alert
+                    v-if="props.status"
+                    type="success"
+                    variant="tonal"
+                    class="mb-4"
+                >
+                    {{ props.status }}
+                </v-alert>
 
                 <v-form @submit.prevent="submit">
                     <v-text-field
