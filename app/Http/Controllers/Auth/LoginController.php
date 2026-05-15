@@ -56,10 +56,12 @@ class LoginController extends Controller
         }
 
         if (! auth()->user()->hasVerifiedEmail()) {
+            auth()->user()->sendEmailVerificationNotification();
+
             Auth::logout();
 
             throw ValidationException::withMessages([
-                'email' => 'E-mail não confirmado, por favor verifique seu e-mail.',
+                'email' => 'E-mail não confirmado. Enviamos um novo link de verificação.',
             ]);
         }
 

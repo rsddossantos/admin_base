@@ -106,6 +106,7 @@ const submit = () => {
                         @update:modelValue="clearLocalErrors"
                         required
                         autofocus
+                        :dirty="true"
                     />
 
                     <v-text-field
@@ -119,6 +120,7 @@ const submit = () => {
                         :error-messages="passwordErrors"
                         @update:modelValue="clearLocalErrors"
                         required
+                        :dirty="true"
                     />
 
                     <v-checkbox
